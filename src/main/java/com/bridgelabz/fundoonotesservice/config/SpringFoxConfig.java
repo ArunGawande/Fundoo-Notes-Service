@@ -24,7 +24,8 @@ import java.util.stream.Collectors;
 
 //@SuppressWarnings({"All", "deprecation"})
 @Configuration
-
+//@EnableSwagger2WebMvc
+//@Import(SpringDataRestConfiguration.class)
 public class SpringFoxConfig implements WebMvcConfigurer {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
@@ -119,7 +120,7 @@ public class SpringFoxConfig implements WebMvcConfigurer {
 
     private ApiInfo apiInfo() {
 
-        return new ApiInfo("FundooUserService",
+        return new ApiInfo("Fundoo-Notes-Service",
 
                 "APIs for E.",
 
@@ -127,7 +128,7 @@ public class SpringFoxConfig implements WebMvcConfigurer {
 
                 "Terms of service",
 
-                new Contact("FundooUserService", "http://bridgelabz.fundoouserservice", "arungawande1995@gmail.com"),
+                new Contact("Fundoo-Notes-Service", "http://bridgelabz.fundoonotesservice", "arungawande1995@gmial.com"),
 
                 "Apache 2.0",
 

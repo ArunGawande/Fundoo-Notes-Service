@@ -10,12 +10,12 @@ import java.util.List;
 
 @Service
 public interface INoteService {
-    Response addNotes(@Valid NoteServiceDTO noteServiceDTO, String token);
+    Response addNotes(@Valid NoteServiceDTO notesDTO, String token);
 
     Response getNotesById(long id);
     List<NoteServiceModel> getAllNotes(String token);
 
-    Response updateNotes(long id, NoteServiceDTO noteServiceDTO, String token);
+    Response updateNotes(long id, @Valid NoteServiceDTO notesDTO, String token);
 
     Response trash(Long id, String token);
 
@@ -29,11 +29,19 @@ public interface INoteService {
 
     List<NoteServiceModel> getArchiveNotes(String token);
 
-    List<NoteServiceModel> pinned(String token);
+    List<NoteServiceModel> getPinnedNotes(String token);
 
     Response removeTrash(Long id, String token);
 
     Response addColour(String token, Long id, String colour);
 
     Response getColour(Long id);
+
+    Response pinNotes(Long id, String token);
+
+    Response unPinNotes(Long id, String token);
+
+    Response addCollaborator(String token, String email, Long id, List<String> collaborator);
+
+    NoteServiceModel setRemainder(String remainderTime, String token, Long id);
 }

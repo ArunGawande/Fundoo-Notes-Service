@@ -1,7 +1,7 @@
 package com.bridgelabz.fundoonotesservice.model;
 
 import com.bridgelabz.fundoonotesservice.dto.NoteServiceDTO;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,25 +26,22 @@ public class NoteServiceModel {
     private Long labelId;
     private String emailId;
     private String color;
-    private LocalDateTime reminderTime;
+    private String reminderTime;
     @Column
     @ElementCollection(targetClass = String.class)
     List<String> collaborator;
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<LabelModel> labelList;
 
     public NoteServiceModel(NoteServiceDTO noteServiceDTO) {
         this.title = noteServiceDTO.getTitle();
         this.description = noteServiceDTO.getDescription();
-        this.userId = noteServiceDTO.getUserId();
-        this.registerDate = noteServiceDTO.getRegisterDate();
-        this.updateDate = noteServiceDTO.getUpdateDate();
-        this.trash = noteServiceDTO.isTrash();
-        this.isArchive = noteServiceDTO.isArchive();
-        this.pin = noteServiceDTO.isPin();
-        this.labelId = noteServiceDTO.getLabelId();
-        this.emailId = noteServiceDTO.getEmailId();
-        this.color = noteServiceDTO.getColor();
-        this.reminderTime = noteServiceDTO.getReminderTime();
-        this.collaborator = noteServiceDTO.getCollaborator();
+//        this.labelId = notesDTO.getLabelId();
+//        this.emailId = notesDTO.getEmailId();
+//        this.color = notesDTO.getColor();
+//        this.reminderTime = notesDTO.getReminderTime();
+//        this.collaborator = notesDTO.getCollaborator();
     }
 
     public NoteServiceModel() {

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface NoteServiceRepository extends JpaRepository<NoteServiceModel, Long> {
+public interface INoteServiceRepository extends JpaRepository<NoteServiceModel, Long> {
     Optional<NoteServiceModel> findByUserIdAndId(Long userId, long id);
 
     List<NoteServiceModel> findByUserId(Long userId);
